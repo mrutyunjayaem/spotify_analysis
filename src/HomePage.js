@@ -56,7 +56,6 @@ function HomePage() {
       }
     }
     fetchData();
-    console.log(recent_tracks)
   }, []);
 
   return (
