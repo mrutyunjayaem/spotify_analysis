@@ -79,7 +79,7 @@ function ArtistsFollowedPage() {
           {followedArtists.map((artist, index) => (
             <div
               key={index}
-              className="h-24 w-96 mx-20 bg-white hover:bg-black shadow-md flex justify-between"
+              className="h-24 w-96 mx-20 bg-white shadow-md flex justify-between"
             >
               <img
                 src={artist[2]}
