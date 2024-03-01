@@ -195,7 +195,7 @@ function HomePage() {
           <h2 className="fancy font-mono">Artists You Follow</h2>
           <div className="flex justify-center">
             {follow_artists.map((artist, index) => (
-              <div key={index} className="bg-black h-80 w-64 m-3">
+              <div key={index} className="bg-black h-80 w-64 m-3 items-center hover:shadow-xl">
                 <img
                   className="m-5 size-40"
                   src={artist?.images[2]?.url}
