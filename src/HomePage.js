@@ -212,6 +212,9 @@ function HomePage() {
             <Link to="/AritstsFollowedPage">&lt;VIEW ALL&gt;</Link>
           </div>
         </div>
+        <div className="h-24 w-80 bg-lime-200 m-10">
+        <p>Listen Now</p>
+        </div>
       </div>
     </div>
   );
