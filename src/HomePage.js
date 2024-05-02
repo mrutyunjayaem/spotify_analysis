@@ -224,7 +224,7 @@ function HomePage() {
           <h2 className="fancy font-mono">Artists You Follow</h2>
           <div className="flex justify-center">
             {follow_artists.map((artist, index) => (
-              <div key={index} className="bg-black h-80 w-64 m-3">
+              <div key={index} className="bg-black h-80 w-64 m-3 items-center hover:shadow-xl">
                 <img
                   className="m-5 size-40"
                   src={artist?.images[2]?.url}
@@ -241,6 +241,7 @@ function HomePage() {
             <Link to="/AritstsFollowedPage">&lt;VIEW ALL&gt;</Link>
           </div>
         </div>
+<<<<<<< HEAD
         <div className="m-10">
         <h2 className="font-mono font-bold flex flex-row">
             Your Currently Playing Song
@@ -262,6 +263,10 @@ function HomePage() {
             </div>
               
             </div>
+=======
+        <div className="h-24 w-80 bg-lime-200 m-10">
+        <p>Listen Now</p>
+>>>>>>> 83b127ee7c79b4d9c121b337754b7f14fa26971e
         </div>
       </div>
     </div>
