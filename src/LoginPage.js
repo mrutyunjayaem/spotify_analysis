@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const CLIENT_ID = "b146be616aa741cc8af6f8804011cc2e";
-  const REDIRECT_URI = "https://spotify-analysis.netlify.app";
+  const REDIRECT_URI = "spotify-analysis.netlify.app";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const SCOPES = [
     "user-top-read",
     "user-follow-read",
     "user-read-recently-played",
+    "user-read-currently-playing",
+    "user-read-playback-state",
   ];
 
   const [token, setToken] = useState("");
