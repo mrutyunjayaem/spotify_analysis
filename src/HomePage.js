@@ -7,60 +7,65 @@ import Header from "./Header";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-
   async function fetchData() {
     try {
-      const [artistRes, tracksRes, recentTracksRes, followArtistsRes, CurrentPlay, PlayState] =
-        await Promise.all([
-          axios.get(
-            "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=0",
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          ),
-          axios.get(
-            "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0",
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          ),
-          axios.get(
-            "https://api.spotify.com/v1/me/player/recently-played?limit=10",
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          ),
-          axios.get("https://api.spotify.com/v1/me/following?type=artist", {
+      const [
+        artistRes,
+        tracksRes,
+        recentTracksRes,
+        followArtistsRes,
+        CurrentPlay,
+        PlayState,
+      ] = await Promise.all([
+        axios.get(
+          "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=10&offset=0",
+          {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }),
-          axios.get("https://api.spotify.com/v1/me/player/currently-playing ", {
+          }
+        ),
+        axios.get(
+          "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0",
+          {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }),
-          axios.get("https://api.spotify.com/v1/me/player", {
+          }
+        ),
+        axios.get(
+          "https://api.spotify.com/v1/me/player/recently-played?limit=10",
+          {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-          }),
-        ]);
-        console.log(PlayState)
-        console.log()
-      
+          }
+        ),
+        axios.get("https://api.spotify.com/v1/me/following?type=artist", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }),
+        axios.get("https://api.spotify.com/v1/me/player/currently-playing ", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }),
+        axios.get("https://api.spotify.com/v1/me/player", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }),
+      ]);
+      console.log(PlayState);
+      console.log();
+
       setArtist(artistRes.data.items.slice(0, 5));
       setTracks(tracksRes.data.items.slice(0, 5));
       setRecentTracks(recentTracksRes.data.items.slice(0, 5));
       setFollowArtists(followArtistsRes.data.artists.items.slice(0, 3));
       setCurrPlay(CurrentPlay.data.item.name);
-      setCurrPlayImage(CurrentPlay.data.item.album.images[0].url)
+      setCurrPlayImage(CurrentPlay.data.item.album.images[0].url);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -71,9 +76,8 @@ function HomePage() {
   const [recent_tracks, setRecentTracks] = useState([]);
   const [follow_artists, setFollowArtists] = useState([]);
   const [curr_play, setCurrPlay] = useState([]);
-  const [curr_play_image, setCurrPlayImage] = useState([])
-  const [play_state, setPlayState] = useState([])
-
+  const [curr_play_image, setCurrPlayImage] = useState([]);
+  const [play_state, setPlayState] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -81,8 +85,7 @@ function HomePage() {
 
   const handleClickEvent = () => {
     fetchData();
-}
-
+  };
 
   return (
     <div>
@@ -224,7 +227,10 @@ function HomePage() {
           <h2 className="fancy font-mono">Artists You Follow</h2>
           <div className="flex justify-center">
             {follow_artists.map((artist, index) => (
-              <div key={index} className="bg-black h-80 w-64 m-3 items-center hover:shadow-xl">
+              <div
+                key={index}
+                className="bg-black h-80 w-64 m-3 items-center hover:shadow-xl"
+              >
                 <img
                   className="m-5 size-40"
                   src={artist?.images[2]?.url}
@@ -241,32 +247,38 @@ function HomePage() {
             <Link to="/AritstsFollowedPage">&lt;VIEW ALL&gt;</Link>
           </div>
         </div>
-<<<<<<< HEAD
         <div className="m-10">
-        <h2 className="font-mono font-bold flex flex-row">
+          <h2 className="font-mono font-bold flex flex-row">
             Your Currently Playing Song
           </h2>
-          <button className="font-mono hover:font-bold text-xl m-2" onClick={handleClickEvent} >Refresh</button>
+          <button
+            className="font-mono hover:font-bold text-xl m-2"
+            onClick={handleClickEvent}
+          >
+            Refresh
+          </button>
           <div>
-            <div >
-            {curr_play ? (
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-3/5 h-64 rounded-[10px]">
-              <div className="flex flex justify-normal">
-              <img className="size-40 m-10" src={curr_play_image} alt="Current Song"></img>
-              <h2 className="font-mono font-bold m-10">{curr_play}</h2></div>
-              </div>
-            ) : (
-              <div>
-                <h2 className="font-mono font-bold m-10">User is not playing any song now</h2>
-              </div>
-            )}
+            <div>
+              {curr_play ? (
+                <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-3/5 h-64 rounded-[10px]">
+                  <div className="flex flex justify-normal">
+                    <img
+                      className="size-40 m-10"
+                      src={curr_play_image}
+                      alt="Current Song"
+                    ></img>
+                    <h2 className="font-mono font-bold m-10">{curr_play}</h2>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <h2 className="font-mono font-bold m-10">
+                    User is not playing any song now
+                  </h2>
+                </div>
+              )}
             </div>
-              
-            </div>
-=======
-        <div className="h-24 w-80 bg-lime-200 m-10">
-        <p>Listen Now</p>
->>>>>>> 83b127ee7c79b4d9c121b337754b7f14fa26971e
+          </div>
         </div>
       </div>
     </div>
