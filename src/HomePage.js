@@ -247,39 +247,6 @@ function HomePage() {
             <Link to="/AritstsFollowedPage">&lt;VIEW ALL&gt;</Link>
           </div>
         </div>
-        <div className="m-10">
-          <h2 className="font-mono font-bold flex flex-row">
-            Your Currently Playing Song
-          </h2>
-          <button
-            className="font-mono hover:font-bold text-xl m-2"
-            onClick={handleClickEvent}
-          >
-            Refresh
-          </button>
-          <div>
-            <div>
-              {curr_play ? (
-                <div className="bg-gradient-to-r from-cyan-500 to-blue-500 w-3/5 h-64 rounded-[10px]">
-                  <div className="flex flex justify-normal">
-                    <img
-                      className="size-40 m-10"
-                      src={curr_play_image}
-                      alt="Current Song"
-                    ></img>
-                    <h2 className="font-mono font-bold m-10">{curr_play}</h2>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <h2 className="font-mono font-bold m-10">
-                    User is not playing any song now
-                  </h2>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
